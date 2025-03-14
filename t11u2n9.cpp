@@ -20,21 +20,21 @@ void bubbleSort(int arr[], int size) {
 
 int main() {
     // Открываем входной и выходной файлы
-    ifstream inputFile("input.txt");
-    ofstream outputFile("output.txt");
+    ifstream in("input.txt");
+    ofstream out("output.txt");
 
-    if (!inputFile.is_open()) {
-        cerr << "Ошибка: Не удалось открыть файл input.txt" << endl;
+    if (!in) {
+        cout << "Ошибка: Не удалось открыть файл input.txt" << endl;
         return 1;
     }
 
-    if (!outputFile.is_open()) {
-        cerr << "Ошибка: Не удалось открыть файл output.txt" << endl;
+    if (!out) {
+        cout << "Ошибка: Не удалось открыть файл output.txt" << endl;
         return 1;
     }
 
     int n;
-    inputFile >> n; // Считываем размер матрицы
+    in >> n; // Считываем размер матрицы
 
     // Динамическое выделение памяти для матрицы
     int** matrix = new int* [n];
@@ -45,7 +45,7 @@ int main() {
     // Заполнение матрицы
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
-            inputFile >> matrix[i][j];
+            in >> matrix[i][j];
         }
     }
 
@@ -85,12 +85,12 @@ int main() {
     }
 
     // Запись отсортированной матрицы в выходной файл
-    outputFile << "Отсортированная матрица:" << endl;
+    out << "Отсортированная матрица:" << endl;
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
-            outputFile << matrix[i][j] << " ";
+            out << matrix[i][j] << " ";
         }
-        outputFile << endl;
+        out << endl;
     }
 
     // Освобождение памяти
@@ -101,8 +101,8 @@ int main() {
     delete[] tempArray;
 
     // Закрытие файлов
-    inputFile.close();
-    outputFile.close();
+    in.close();
+    out.close();
 
     cout << "Данные успешно обработаны и записаны в файл output.txt" << endl;
 
