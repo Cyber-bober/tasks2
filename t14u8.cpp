@@ -2,9 +2,9 @@
 #include <string>
 using namespace std;
 
-class TelephoneDirectory {  // Абстрактный класс для всех типов записей
+class TelephoneDirectory {  // РђР±СЃС‚СЂР°РєС‚РЅС‹Р№ РєР»Р°СЃСЃ РґР»СЏ РІСЃРµС… С‚РёРїРѕРІ Р·Р°РїРёСЃРµР№
 public:
-    virtual ~TelephoneDirectory() = default; // Виртуальный деструктор
+    virtual ~TelephoneDirectory() = default; // Р’РёСЂС‚СѓР°Р»СЊРЅС‹Р№ РґРµСЃС‚СЂСѓРєС‚РѕСЂ
     virtual void display() const = 0;       
     virtual bool search(const string& lastName) const = 0; 
 };
@@ -72,13 +72,13 @@ public:
     }
 };
 
-class TelephoneDatabase {  // Класс для управления базой данных
+class TelephoneDatabase {  // РљР»Р°СЃСЃ РґР»СЏ СѓРїСЂР°РІР»РµРЅРёСЏ Р±Р°Р·РѕР№ РґР°РЅРЅС‹С…
 private:
     static const int MAX = 100; 
     TelephoneDirectory* entries[MAX]; 
     int count = 0; 
 public:
-    ~TelephoneDatabase() { // Деструктор для освобождения памяти
+    ~TelephoneDatabase() { // Р”РµСЃС‚СЂСѓРєС‚РѕСЂ РґР»СЏ РѕСЃРІРѕР±РѕР¶РґРµРЅРёСЏ РїР°РјСЏС‚Рё
         for (int i = 0; i < count; ++i) delete entries[i];
     }
     void add(TelephoneDirectory* entry) { 
@@ -88,7 +88,7 @@ public:
     void displayAll() const { 
         for (int i = 0; i < count; ++i) entries[i]->display();
     }
-    void search(const string& lastName) const { // Поиск по фамилии
+    void search(const string& lastName) const { // РџРѕРёСЃРє РїРѕ С„Р°РјРёР»РёРё
         bool found = false;
         for (int i = 0; i < count; ++i) {
             if (entries[i]->search(lastName)) {
@@ -101,7 +101,7 @@ public:
 };
 
 int main() {
-    TelephoneDatabase BD; // Создание базы данных
+    TelephoneDatabase BD; // РЎРѕР·РґР°РЅРёРµ Р±Р°Р·С‹ РґР°РЅРЅС‹С…
 
     BD.add(new Persona("Ivanov", "Moscow", "123-456"));
     BD.add(new Organization("Tech Inc.", "SPb", "987-654", "123-456", "John Doe"));
@@ -111,6 +111,6 @@ int main() {
     string lastName;
     cout << "Enter last name to search: ";
     cin >> lastName;
-    BD.search(lastName);  // Поиск по фамилии
+    BD.search(lastName);  // РїРѕРёСЃРє РїРѕ С„Р°РјРёР»РёРё
     return 0;
 }
