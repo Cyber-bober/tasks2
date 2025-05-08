@@ -16,6 +16,7 @@ public:
 
     int dequeue() {
         if (data.empty()) {
+            cout << "queue pustoy";
             return 0; 
         }
         int value = data.front(); 
