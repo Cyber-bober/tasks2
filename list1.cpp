@@ -11,6 +11,11 @@ int main() {
     cout << "How many elements? ";
     cin >> n;
 
+    if (n <= 0) {
+        cout << "Number of elements can't be 0\n";
+        return 0;
+    }
+
     list<int> lst;
     cout << "Enter elements:\n";
     for (int i = 0; i < n; ++i) {
@@ -18,31 +23,36 @@ int main() {
         cin >> num;
         lst.push_back(num);
     }
+
     if (lst.empty()) {
-        cout << "list pustoy\n";
+        cout << "List is empty\n";
         return 0;
     }
-    list<int>::iterator minIter = lst.begin(), maxIter = lst.begin();
-    for (list<int>::iterator iter = lst.begin(); iter != lst.end(); ++iter) {
+
+    auto minIter = lst.begin();
+    auto maxIter = lst.begin();
+
+    for (auto iter = lst.begin(); iter != lst.end(); ++iter) {
         if (*iter < *minIter) minIter = iter;
         if (*iter > *maxIter) maxIter = iter;
     }
-  
-    if (distance(lst.begin(), minIter) > distance(lst.begin(), maxIter)) {
+
+    bool minAfterMax = distance(lst.begin(), minIter) > distance(lst.begin(), maxIter);
+
+    if (minAfterMax) {
         cout << "Min element after max element\n";
-        return 0;
     }
-  
+
+    if (minAfterMax) {
+        swap(minIter, maxIter);  //for sum
+    }
+
     int sum = 0;
-    list<int>::iterator start = next(minIter); 
-    list<int>::iterator end = maxIter;         
-
-    while (start != end) {
-        sum += *start;
-        ++start;
+    for (auto iter = next(minIter); iter != maxIter; ++iter) {
+        sum += *iter;
     }
 
-    cout << "sum of elements: " << sum << "\n";
+    cout << "Sum of elements between min and max: " << sum << "\n";
 
     return 0;
 }
