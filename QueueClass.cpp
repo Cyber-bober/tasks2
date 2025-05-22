@@ -1,4 +1,4 @@
-/*Дан список чисел в файле.В новый файл сперва записать положительные, а потом отрицательные числа*/
+/*Р”Р°РЅ СЃРїРёСЃРѕРє С‡РёСЃРµР» РІ С„Р°Р№Р»Рµ.Р’ РЅРѕРІС‹Р№ С„Р°Р№Р» СЃРїРµСЂРІР° Р·Р°РїРёСЃР°С‚СЊ РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹Рµ, Р° РїРѕС‚РѕРј РѕС‚СЂРёС†Р°С‚РµР»СЊРЅС‹Рµ С‡РёСЃР»Р°*/
 #include <iostream>
 #include <fstream>
 using namespace std;
@@ -11,8 +11,8 @@ private:
         Element* next;
         Element(Item x, Element* p = nullptr) : info(x), next(p) {}
     };
-    Element* head = nullptr; // указатель на начало очереди
-    Element* tail = nullptr; // указатель на конец очереди
+    Element* head = nullptr; // СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РЅР°С‡Р°Р»Рѕ РѕС‡РµСЂРµРґРё
+    Element* tail = nullptr; // СѓРєР°Р·Р°С‚РµР»СЊ РЅР° РєРѕРЅРµС† РѕС‡РµСЂРµРґРё
 
 public:
     Queue() : head(nullptr), tail(nullptr) {}
@@ -21,7 +21,7 @@ public:
         return head == nullptr;
     }
 
-    Item Get() { // Извлечение элемента из очереди
+    Item Get() { // РР·РІР»РµС‡РµРЅРёРµ СЌР»РµРјРµРЅС‚Р° РёР· РѕС‡РµСЂРµРґРё
         if (Empty()) {
             cout << "Queue is empty ";
             return 0;
@@ -36,7 +36,7 @@ public:
         return i;
     }
 
-    void Put(Item data) { // Добавление элемента в очередь
+    void Put(Item data) { // Р”РѕР±Р°РІР»РµРЅРёРµ СЌР»РµРјРµРЅС‚Р° РІ РѕС‡РµСЂРµРґСЊ
         Element* t = new Element(data);
         if (head == nullptr) {
             head = t;
