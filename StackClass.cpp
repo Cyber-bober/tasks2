@@ -8,32 +8,32 @@ class Stack {
         Element* next;
         Element(int x, Element* p) : inf(x), next(p) {}
     };
-    Element* head; // указатель на вершину стека
+    Element* head; 
 
 public:
     Stack() : head(0) {} // конструктор стека
 
-    bool Empty() { // проверка на пустоту
+    bool Empty() { 
         return head == 0;
     }
 
-    int Pop() { // извлечение элемента из стека
+    int Pop() { 
         if (Empty()) {
             cout << "Stack is empty ";
             return 0;
         }
-        Element* r = head; // запоминаем указатель на верхний элемент
-        int i = r->inf;   // запоминаем информацию из верхнего элемента
-        head = r->next;    // передвигаем указатель на следующий от вершины элемент
-        delete r;          // освобождаем память, на которую указывает r
-        return i;          // возвращаем значение информационного поля
+        Element* r = head; 
+        int i = r->inf;   
+        head = r->next;    
+        delete r;          
+        return i;          
     }
 
-    void Push(int data) { // добавление элемента в стек
+    void Push(int data) { 
         head = new Element(data, head);
     }
 
-    int Top() { // просмотр элемента на вершине
+    int Top() { 
         if (Empty()) {
             cout << "Stack is empty ";
             return 0;
@@ -68,7 +68,6 @@ int main() {
         out << buf << " ";
     }
 
-    // Добавление отрицательных чисел
     while (!negativeStack.Empty()) {
         int buf = negativeStack.Pop();
         out << buf << " ";
