@@ -9,16 +9,16 @@ private:
     struct Element {
         Item info;
         Element* next;
-        Element(Item x, Element* p = nullptr) : info(x), next(p) {}
+        Element(Item x, Element* p = 0) : info(x), next(p) {}
     };
-    Element* head = nullptr; // указатель на начало очереди
-    Element* tail = nullptr; // указатель на конец очереди
+    Element* head = 0; 
+    Element* tail = 0; 
 
 public:
-    Queue() : head(nullptr), tail(nullptr) {}
+    Queue() : head(0), tail(0) {}
 
     bool Empty() {
-        return head == nullptr;
+        return head == 0;
     }
 
     Item Get() { // Извлечение элемента из очереди
@@ -29,8 +29,8 @@ public:
         Element* t = head;
         Item i = t->info;
         head = t->next;
-        if (head == nullptr) {
-            tail = nullptr;
+        if (head == 0) {
+            tail = 0;
         }
         delete t;
         return i;
@@ -38,7 +38,7 @@ public:
 
     void Put(Item data) { // Добавление элемента в очередь
         Element* t = new Element(data);
-        if (head == nullptr) {
+        if (head == 0) {
             head = t;
             tail = t;
         }
