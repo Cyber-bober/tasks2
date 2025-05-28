@@ -11,7 +11,7 @@ class Stack {
     Element* head; 
 
 public:
-    Stack() : head(0) {} // конструктор стека
+    Stack() : head(0) {}
 
     bool Empty() { 
         return head == 0;
@@ -25,8 +25,8 @@ public:
         Element* r = head; 
         int i = r->inf;   
         head = r->next;    
-        delete r;          
-        return i;          
+        delete r;         
+        return i;         
     }
 
     void Push(int data) { 
@@ -63,14 +63,22 @@ int main() {
     }
     file.close();
 
+    Stack positiveTemp, negativeTemp;
+
     while (!positiveStack.Empty()) {
-        int buf = positiveStack.Pop();
-        out << buf << " ";
+        positiveTemp.Push(positiveStack.Pop());
     }
 
     while (!negativeStack.Empty()) {
-        int buf = negativeStack.Pop();
-        out << buf << " ";
+        negativeTemp.Push(negativeStack.Pop());
+    }
+
+    while (!positiveTemp.Empty()) {
+        out << positiveTemp.Pop() << " ";
+    }
+
+    while (!negativeTemp.Empty()) {
+        out << negativeTemp.Pop() << " ";
     }
 
     return 0;
