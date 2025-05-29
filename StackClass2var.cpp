@@ -1,3 +1,4 @@
+//Дана последовательность чисел. Сначала записать положительные, потом отрицательные
 #include <iostream>
 #include <fstream>
 using namespace std;
@@ -62,7 +63,7 @@ int main() {
     Stack tempStack;
 
     while (!allNumbersStack.Empty()) {
-        tempStack.Push(allNumbersStack.Pop()); // ������� ���� ����� �� allNumbersStack � tempStack ��� ���������� �������
+        tempStack.Push(allNumbersStack.Pop()); // Перенос всех чисел из allNumbersStack в tempStack для сохранения порядка
     }
 
     Stack positiveStack;
